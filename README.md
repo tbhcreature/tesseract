@@ -29,7 +29,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE phosphor)
 * then, to use it: you need to include headers:
 ```cpp
 // ...top of your project
-#include "phosphor.hpp"
+#include "Phosphor.hpp"
 ```
 
 ## api documentation
@@ -45,7 +45,7 @@ to use the api:
 
 ### usage:
 ```cpp
-#include "phosphor.hpp"
+#include "Phosphor.hpp"
 
 int main(void) {
     int someVal = 0;
