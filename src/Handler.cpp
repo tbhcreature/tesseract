@@ -41,8 +41,4 @@ void logarithm::logCstr(const char* str) {
     }
 }
 
-// templated functions moved to Template.hpp
-// templated functions moved to Template.hpp
-// see Api.cpp for user usage
-
 } // namespace log
