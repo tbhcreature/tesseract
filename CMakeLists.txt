@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(tesseract LANGUAGES CXX)
+project(phosphor LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -10,14 +10,14 @@ file(GLOB_RECURSE
         "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
 )
 
-add_library(tesseract STATIC ${SOURCES})
+add_library(phosphor STATIC ${SOURCES})
 
-target_include_directories(tesseract
+target_include_directories(phosphor
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_compile_options(tesseract PRIVATE
+target_compile_options(phosphor PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:/W4 /permissive->
     $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -pedantic>
 )

@@ -1,13 +1,13 @@
-# tesseract
-tesseract is a lightweight version of fmt. nothing else to put here (or is there).<br>
+# phosphor
+phosphor is a lightweight version of fmt. nothing else to put here (or is there).<br>
 see inclusion directions below
 
 # inclusion directions
-* you will need cmake to use tesseract. if you don't have cmake, download it from [here](https://cmake.org/download)
+* you will need cmake to use phosphor. if you don't have cmake, download it from [here](https://cmake.org/download)
 
 
 ### (recommended):
-* if you have an existing project and want to add tesseract to it, add these rules to your CMakeLists:
+* if you have an existing project and want to add phosphor to it, add these rules to your CMakeLists:
 
 ```cmake
 include(FetchContent)
@@ -16,20 +16,20 @@ set(FETCHCONTENT_BASE_DIR "${CMAKE_BINARY_DIR}/external")
 set(FETCHCONTENT_UPDATES_DISCONNECTED TRUE)
 
 FetchContent_Declare(
-    tesseract
-    GIT_REPOSITORY https://github.com/xodys10/tesseract.git
+    phosphor
+    GIT_REPOSITORY https://github.com/xodys10/phosphor.git
     GIT_TAG main
 )
 
-FetchContent_MakeAvailable(tesseract)
+FetchContent_MakeAvailable(phosphor)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE tesseract)
+target_link_libraries(${PROJECT_NAME} PRIVATE phosphor)
 
 ```
 * then, to use it: you need to include headers:
 ```cpp
 // ...top of your project
-#include "Tesseract.hpp"
+#include "phosphor.hpp"
 ```
 
 ## api documentation
@@ -45,7 +45,7 @@ to use the api:
 
 ### usage:
 ```cpp
-#include "Tesseract.hpp"
+#include "phosphor.hpp"
 
 int main(void) {
     int someVal = 0;
