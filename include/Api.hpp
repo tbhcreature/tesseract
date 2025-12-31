@@ -2,7 +2,7 @@
 
 namespace phosphor::log {
 
-inline logarithm logger;
+inline core logger;
 
 template<typename... Args>
 inline void info(const char* fmt, Args... args) {
