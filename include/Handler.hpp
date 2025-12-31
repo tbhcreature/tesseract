@@ -20,7 +20,7 @@ enum class LOG_LEVEL {
 
 inline std::atomic<LOG_LEVEL> logLevel{LOG_LEVEL::INFO};
 
-inline std::string toString(LOG_LEVEL level) {
+inline const char* toString(LOG_LEVEL level) {
     switch (level) {
         case LOG_LEVEL::INFO: return "INFO";
         case LOG_LEVEL::WARN: return "WARN";
@@ -30,26 +30,27 @@ inline std::string toString(LOG_LEVEL level) {
     }
 }
 
-[[nodiscard]] inline std::string getTime() {
+[[nodiscard]] inline const char* getTime() {
+    thread_local char buf[9];
     auto now = std::chrono::system_clock::now();
-    std::time_t time = std::chrono::system_clock::to_time_t(now);
-    std::tm tm = {};
+    std::time_t t = std::chrono::system_clock::to_time_t(now);
+    std::tm tm = {0};
 
 #if defined(_WIN32)
-    localtime_s(&tm, &time);
-#elif defined(__linux__)
-    // no need for __APPLE__ because xnu is linux compatible
-    localtime_r(&time, &tm);
+    localtime_s(&tm, &t);
 #else
-    #error i dont know how to get the time on this platform!
+    localtime_r(&t, &tm);
 #endif
 
-    return std::format(
-        "{:02}:{:02}:{:02}",
+    std::snprintf(
+        buf,
+        sizeof(buf),
+        "%02d:%02d:%02d",
         tm.tm_hour,
         tm.tm_min,
         tm.tm_sec
     );
+    return buf;
 }
 
 class core {

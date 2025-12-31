@@ -53,8 +53,8 @@ void core::logFmt(LOG_LEVEL level, const char* fmt, Args... args) {
     std::fprintf(
         stderr,
         "[%s, %s]: ",
-        getTime().c_str(),
-        toString(level).c_str()
+        getTime(),
+        toString(level)
     );
 
     formatImpl(fmt, args...);
